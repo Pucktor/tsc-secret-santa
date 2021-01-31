@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="content-card">
+    <%= image_tag "rudolph.png", alt: "Rudolph", class: "rudolph-avatar", width: "127px" %>
+
+    <h1>2. Add participants</h1>
+
+    <div style="justify-content: space-around; display: flex; padding-bottom:50px">
+      <%= render "participants/new", event: @event, participant: @participant %>
+      
+        <table>
+          <tbody>
+            <thead>
+              <th>Name</th>
+              <th>Email</th>
+            </thead>
+            <% @event.participants.each do |participant| %>
+              <tr>
+                <td><%= participant.name %></td>
+                <td><%= participant.email %></td>
+                <td>
+                  <%= link_to participant_path(participant), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <i class="fa fa-trash destroy_participant"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+
+    <%= link_to 'Validate participants', event_match_path(@event), class:'button' %>
+    
+  </div>
+
+  
+
+</div>

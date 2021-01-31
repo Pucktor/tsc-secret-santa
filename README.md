@@ -1,0 +1,3 @@
+# README
+
+Secret Santa organizer
